@@ -11,9 +11,9 @@ c = captcha.Captcha()
 img, id = c.get()
 ```
 
-In this case variable "img" will get a value of serialized captcha 
-image (of type "bytes) which contains a random text. In variable 
-"id" will be stored sha256-hash of captcha text.
+In this case variable `img` will get a value of serialized captcha 
+image (of type `bytes`) which contains a random text. In variable 
+`id` will be stored `sha256-hash` of captcha text.
 
 For example:
 
