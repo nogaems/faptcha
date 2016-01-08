@@ -25,3 +25,8 @@ For example:
 Captcha(size=(150, 50), length=4, font_name='terminus.ttf', font_size=40, color=(0, 0, 0, 255)):
 ```
 
+Alphabet (with default `terminus` font):
+
+>~[faptcha](https://raw.githubusercontent.com/nogaems/faptcha/master/alphabet.png)
+
+
