@@ -94,8 +94,8 @@ class Captcha:
         out = self._noise(out)
 
         # for debug
-        out.show()
-        print(key)
+        # out.show()
+        # print(key)
 
         f = BytesIO()
         out.save(f, 'PNG')
@@ -142,6 +142,3 @@ class Captcha:
             return True
         else:
             return False
-
-c = Captcha()
-c.get()
