@@ -19,6 +19,15 @@ For example:
 
 >![faptcha](https://raw.githubusercontent.com/nogaems/faptcha/master/default_sample.png)
 
+To verify the input captcha:
+
+```
+c.check(id, key)
+```
+
+where `key` is the user-entered text captcha. If captcha is entered correctly, the function returns `True`, `False` otherwise.
+
+
 `Captcha` class signature with default values:
 
 ```
