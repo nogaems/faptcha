@@ -27,6 +27,6 @@ Captcha(size=(150, 50), length=4, font_name='terminus.ttf', font_size=40, color=
 
 Alphabet (with default `terminus` font):
 
->~[faptcha](https://raw.githubusercontent.com/nogaems/faptcha/master/alphabet.png)
+>![faptcha](https://raw.githubusercontent.com/nogaems/faptcha/master/alphabet.png)
 
 
