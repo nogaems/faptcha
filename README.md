@@ -11,7 +11,7 @@ c = captcha.Captcha()
 img, id = c.get()
 ```
 
-After that `img` gets serialized captcha image (of type `bytes`) which contains some random text. `id` stores the `sha256-hash` of captcha text.
+After that `img` gets serialized captcha image (of type `bytes`) which contains some random text. `id` stores the `sha256`-hash of captcha text.
 
 For example:
 
@@ -20,16 +20,18 @@ For example:
 To verify if the captcha text was recognized correctly:
 
 ```
-c.check(id, key)
+c.check(id, code)
 ```
 
-where `key` is the user-entered text of the captcha. If the captcha is recognized correctly, the function returns `True`, `False` otherwise.
+where `code` is the user-entered text of the captcha. If the captcha is recognized correctly, the function returns `True`, `False` otherwise.
 
 
 `Captcha` class signature with default values:
 
 ```
-Captcha(size=(150, 50), length=4, font_name='terminus.ttf', font_size=40, color=(0, 0, 0, 255)):
+Captcha(size=(150, 50), length=4, font_name='terminus.ttf', font_size=40,
+             color=(0, 0, 0, 255), bg_color=(255, 255, 255, 0), storage_size=2**20)
+
 ```
 
 Alphabet (with default `terminus` font):
