@@ -178,9 +178,13 @@ class Captcha:
             raise TypeError(
                 '\'alpha\' value should be in the range from 0 to 255')
 
-    def check(self, id, code):
+    def check(self, id, code, delete=True):
         if id not in self.storage:
             return False
         result = True if self.storage[id] == code else False
-        self.storage.pop(id)
+        if delete:
+            self.storage.pop(id)
         return result
+
+    def remove_from_storage(self, id):
+        self.storage.pop(id) if id in self.storage else None
