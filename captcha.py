@@ -186,5 +186,8 @@ class Captcha:
             self.storage.pop(id)
         return result
 
+    def is_issued(self, id):
+        return id in self.captcha.storage
+
     def remove_from_storage(self, id):
         self.storage.pop(id) if id in self.storage else None
