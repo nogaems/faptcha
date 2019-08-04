@@ -1,5 +1,6 @@
 from hashlib import sha256
-from random import random, uniform, randrange
+from random import uniform, randrange
+import random
 from os import path
 from io import BytesIO
 from math import sin, pi
@@ -12,7 +13,8 @@ class Captcha:
     storage = OrderedDict()
 
     def __init__(self, size=(150, 50), length=4, font_name='terminus.ttf', font_size=40,
-                 color=(0, 0, 0, 255), bg_color=(255, 255, 255, 0), storage_size=2**20):
+                 color=(0, 0, 0, 255), bg_color=(255, 255, 255, 0), storage_size=2**20,
+                 random_seed=None):
         if not isinstance(size, tuple):
             raise TypeError('\'size\' must be \'tuple\'')
         elif not len(size) == 2:
@@ -59,13 +61,15 @@ class Captcha:
         if not isinstance(storage_size, int) or storage_size <= 0:
             raise TypeError('\'storage_size\' must be a non-negative integer')
         self.storage_size = storage_size
+        random.seed(random_seed)
 
     def __repr__(self):
         return '{}({})'.format(self.__class__.__name__,
                                repr(self.__dict__))
 
     def get(self):
-        code = sha256(random().hex().encode('utf8')).hexdigest()[-self.length:]
+        code = sha256(random.random().hex().encode(
+            'utf8')).hexdigest()[-self.length:]
         id = sha256(code.encode('utf8')).hexdigest()
 
         # If we're exeeding the maximum size of the storage, we got to manually
@@ -187,7 +191,7 @@ class Captcha:
         return result
 
     def is_issued(self, id):
-        return id in self.captcha.storage
+        return id in self.storage
 
     def remove_from_storage(self, id):
         self.storage.pop(id) if id in self.storage else None
